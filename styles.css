@@ -1,0 +1,100 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    background: black; /* Black background */
+    color: #ffffff; /* Font color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px; /* Perspective for 3D effect */
+}
+
+h2 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px #ff007f, 0 0 30px #ff007f; /* Text shadow */
+    margin-bottom: 20px;
+    z-index: 10; /* Ensure text is above glowing effect */
+}
+
+textarea, button {
+    width: 80%;
+    max-width: 500px;
+    margin: 10px;
+    padding: 12px;
+    border: 2px solid #ff007f; /* Border color */
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 0, 127, 0.1); /* Background color */
+    color: #ff007f; /* Font color */
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+    z-index: 10; /* Ensure inputs are above glowing effect */
+}
+
+button {
+    background: #ff007f; /* Button color */
+    color: white;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0 0 5px black;
+}
+
+button:hover {
+    background: #d6006e; /* Darker shade on hover */
+    transform: scale(1.05);
+    transition: background 0.3s, transform 0.3s; /* Smooth transition on hover */
+}
+
+#updatedURL {
+    margin-top: 15px;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+    background: rgba(255, 0, 127, 0.2); /* Background color */
+    border: 1px solid #ff007f; /* Border color */
+    border-radius: 8px;
+    word-wrap: break-word;
+    text-shadow: 0 0 5px #ff007f; /* Text shadow */
+    transition: background 0.3s;
+    z-index: 10; /* Ensure URL box is above glowing effect */
+}
+
+#updatedURL:hover {
+    background: rgba(255, 0, 127, 0.3);
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none; /* Prevent interaction with glowing circles */
+    animation: glow-animation 0.5s forwards; /* Animation for glowing effect */
+}
+
+@keyframes glow-animation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure canvas is behind everything */
+}
