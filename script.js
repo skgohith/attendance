@@ -7,37 +7,11 @@ function encodeBase64Text() {
         return;
     }
     let encodedText = btoa(inputText);
-    updateURL(encodedText);
+    let newURL = baseURL.replace("MjAyMzA5MBI2NTZ4", encodedText);
+
+    // Open the generated URL in a new tab
+    window.open(newURL, "_blank");
 }
-
-function updateURL(encodedValue) {
-    let newURL = baseURL.replace("MjAyMzA5MBI2NTZ4", encodedValue);
-    document.getElementById("updatedURL").innerText = newURL;
-}
-
-function copyToClipboard() {
-    let urlText = document.getElementById("updatedURL").innerText;
-    navigator.clipboard.writeText(urlText).then(() => {
-        alert("Updated URL copied to clipboard!");
-    });
-}
-
-// Create glowing effect on click
-document.addEventListener('click', (event) => {
-    const glow = document.createElement('div');
-    glow.classList.add('glow');
-    glow.style.width = '100px'; // Size of the glow
-    glow.style.height = '100px'; // Size of the glow
-    glow.style.background = 'rgba(255, 0, 127, 0.5)'; // Glow color
-    glow.style.left = `${event.clientX - 50}px`; // Center the glow
-    glow.style.top = `${event.clientY - 50}px`; // Center the glow
-    document.body.appendChild(glow);
-
-    // Remove the glow after animation
-    setTimeout(() => {
-        glow.remove();
-    }, 500);
-});
 
 // Grid Animation with RGB effect on cursor move
 const canvas = document.getElementById("gridCanvas");
